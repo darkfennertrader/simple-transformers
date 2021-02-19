@@ -19,14 +19,14 @@ from simpletransformers.conv_ai import ConvAIModel, ConvAIArgs
 
 cuda_available = torch.cuda.is_available()
 
-model_args = ConvAIArgs()
-# Common Options
-# model_args.max_history = 5
-model_args.cache_dir = "./models/pre-trained/gpt2/gpt2/"
-model_args.encoding = "utf-8"
-model_args.output_dir = "./models/fine-tuned/gpt2/gpt2"
-model_args.overwrite_output_dir = True
-model_args.save_model_every_epoch = True
+# model_args = ConvAIArgs()
+# # Common Options
+# # model_args.max_history = 5
+# model_args.cache_dir = "./models/pre-trained/gpt2/gpt2/"
+# model_args.encoding = "utf-8"
+# model_args.output_dir = "./models/fine-tuned/gpt2/gpt2"
+# model_args.overwrite_output_dir = True
+# model_args.save_model_every_epoch = True
 
 
 # model = ConvAIModel(
@@ -318,6 +318,7 @@ if __name__ == "__main__":
 
     trial_filename = "experiment"
     basic_questions = "./basic_questions.txt"
+    basic_questions = "./basic_questions copy.txt"
     # number of trials for hyperparameter tuning
     n_trials = 1
 

@@ -17,4 +17,8 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "code-runner.ignoreSelection": true,
+    // "python.linting.pylintArgs": [
+    //     "--errors-only",
+    //     "--generated-members=numpy.* ,torch.*"
+    // ]
 }

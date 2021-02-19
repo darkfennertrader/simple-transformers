@@ -7,6 +7,9 @@ import pandas as pd
 import GPUtil
 import json
 
+from utils.aws_utils import write_to_s3, download_from_s3
+
+
 # from transformers import (
 #     AutoTokenizer,
 #     AutoModelForSequenceClassification,
@@ -37,12 +40,10 @@ model_args.fp16 = True
 model_args.output_dir = "./models/fine-tuned/gpt/"
 model_args.train_batch_size = 4
 model_args.max_seq_length = 128
-model_args.num_candidates = 19
-
-# print(dir(model_args))
+model_args.num_candidates = 2
 
 
-test_file = "./models/training_data/test_data.json"
+test_file = "./models/training_data/variant_1.json"
 
 
 # Initialization for GPT2
@@ -79,18 +80,18 @@ with open("./models/training_data/dataset.json", "w") as f:
 #     raw_data = json.loads(f.read())
 
 
-model.train_model(
-    train_file="./models/training_data/dataset.json",
-    show_running_loss=True,
-    eval_file=False,
-)
-
-##########################################################
-# def greet_me(**kwargs):
-#     print(type(kwargs))
-#     for key, value in kwargs.items():
-#         print("{0} = {1}".format(key, value))
+# model.train_model(
+#     train_file="./models/training_data/dataset.json",
+#     show_running_loss=True,
+#     eval_file=False,
+# )
 
 
-# greet_me(name="yasoob")
-##########################################################
+filename = "./models/training_data/dataset.json"
+# main directory name (or bucket)
+bucket = "ai-develop"
+# key = prefix + object name (full path not considering the bucket)
+key = "training-datasets/convAI/variant_1.json"
+
+
+write_to_s3(filename, bucket, key)

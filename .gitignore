@@ -1,4 +1,10 @@
+/.vscode
+__pycache__
 /venv
 /models
+/wandb
+/trials
+/runs
+/training_data
 
 
